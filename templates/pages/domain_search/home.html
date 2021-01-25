@@ -1,0 +1,70 @@
+{% extends 'theme/layout.html' %}
+
+{% load static %}
+{% block javascript %}
+    <link rel="stylesheet" href="{% static 'vendor/toastr/toastr.min.css' %}">
+    <script src="{% static "vendor/jquery/js/bootstrap.bundle.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "vendor/datatables/js/datatables/jquery.dataTables.js" %}" type="text/javascript"></script>
+
+    <script src="{% static "vendor/toastr/toastr.min.js" %}" type="text/javascript"></script>
+    <script src="{% static "vendor/project/search.js" %}" type="text/javascript"></script>
+    <style>
+        /* Start by setting display:none to make this hidden.
+           Then we position it in relation to the viewport window
+           with position:fixed. Width, height, top and left speak
+           for themselves. Background we set to 80% white with
+           our animation centered, and no-repeating */
+        .loadingModal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(255, 255, 255, .8) url('{% static 'images/FhHRx.gif' %}') 50% 50% no-repeat;
+        }
+
+        /* When the body has the loading class, we turn
+           the scrollbar off with overflow:hidden */
+        body.loading .loadingModal {
+            overflow: hidden;
+        }
+
+        body.loading .loadingModal {
+            display: block;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+<div class="card card-body p-3 text-center">
+    <div class="text-center">
+        <img src="{% static '/images/logo.svg' %}" style="width: 250px; height: 150px" alt="">
+    </div>
+
+    <div style="  display: table;margin: 0 auto;">
+        <div class="m-0">
+            <form id="request">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="input-group">
+                                    <span class="input-group-prepend" id="basic-addon1">
+                                        <span class="input-group-text">+92 Pakistan</span>
+                                    </span>
+                        <input type="text" class="form-control" placeholder="Enter Phone Number"
+                               aria-label="phone_number" id="phone_number" name="phone_number"
+                               aria-describedby="basic-addon1">
+                        <span class="input-group-append">
+                                        <button class="btn btn-dark" type="submit"><i
+                                                class="fe fe-search"></i> </button>
+                                    </span>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
