@@ -24,18 +24,25 @@ DOTENV_FILE = os.path.join(BASE_DIR, ".env")
 if os.path.isfile(DOTENV_FILE):
     dotenv.load_dotenv(DOTENV_FILE)
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'kv@3qvp7h5!r9-c=$%6obaymyg9n!&gzk12zld@2(7u(&rx4*z'
+
+if 'ON_HEROKU' in os.environ:
+    SECRET_KEY = os.environ['SECRET_KEY']
+else:
+
+    SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+if 'ON_HEROKU' in os.environ:
+    DEBUG = False
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -83,7 +90,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Khoojee.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -100,15 +106,14 @@ else:
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
             'NAME': os.getenv("DB_NAME"),
-            'USER':os.getenv("DB_USERNAME"),
+            'USER': os.getenv("DB_USERNAME"),
             'PASSWORD': os.getenv("DB_PASSWORD"),
             'HOST': os.getenv("DB_HOST"),
             'PORT': os.getenv("DB_PORT"),
 
-    }
+        }
 
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -128,7 +133,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -141,7 +145,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -166,12 +169,6 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 
-SERVER_ONE = ''
-PROXY_SERVER = ''
-SERVER_TWO = ''
-SERVER_THREE = ''
-SERVER_FOUR = ''
-
 if 'ON_HEROKU' in os.environ:
 
     django_heroku.settings(locals())
@@ -180,3 +177,10 @@ if 'ON_HEROKU' in os.environ:
     SERVER_TWO = str(os.environ['SERVER_TWO'])
     SERVER_THREE = str(os.environ['SERVER_THREE'])
     SERVER_FOUR = str(os.environ['SERVER_FOUR'])
+
+else:
+    SERVER_ONE = os.getenv("SERVER_ONE")
+    PROXY_SERVER = os.getenv("PROXY_SERVER")
+    SERVER_TWO = os.getenv("SERVER_TWO")
+    SERVER_THREE = os.getenv("SERVER_THREE")
+    SERVER_FOUR = os.getenv("SERVER_FOUR")

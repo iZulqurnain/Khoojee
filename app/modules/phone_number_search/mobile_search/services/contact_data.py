@@ -1,9 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 
-from app.core.mobile_search.helper.get_proxy import GetProxy
 from app.models import PhoneNumbersModel
 from Khoojee.settings import SERVER_ONE
+from app.modules.phone_number_search.mobile_search.helper.get_proxy import GetProxy
+from fake_useragent import UserAgent
 
 
 class ContactData:
@@ -31,12 +32,19 @@ class ContactData:
                 return False, None
 
             payload = {'cnnum': self.__MOBILE_NUMBER__}
+            ua = UserAgent()
             headers = {
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36'
-                              ' (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
-
-            response = requests.post(SERVER_ONE, headers=headers,
+                "user-agent" : ua.random
+               }
+            if use_proxy:
+                proxies = GetProxy.gen_proxy()
+                response = requests.post(SERVER_ONE, headers=headers,proxies = proxies,
                                      data=payload)
+                print("Using proxy : ", proxies)
+                print(response.content)
+            else:
+                response = requests.post(SERVER_ONE, headers=headers,
+                                         data=payload)
 
             soup = BeautifulSoup(response.content, 'html.parser')
             table = soup.find(lambda tag: tag.name == 'table')

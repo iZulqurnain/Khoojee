@@ -17,7 +17,15 @@
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon"/>
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon"/>
     <link rel="stylesheet" href="{% static '/vendor/tabler/css/dashboard.css' %}">
+        <script src="{% static "vendor/jquery/js/jquery.min.js" %}" type="text/javascript"></script>
 
+{% block javascript %}
+
+    {% endblock %}
+
+    {% block headblock %}
+
+    {% endblock %}
 </head>
 
 <body class="antialiased theme-dark">

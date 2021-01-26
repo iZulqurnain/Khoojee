@@ -6,7 +6,7 @@ class GetProxy:
     @staticmethod
     def gen_proxy():
         curl = requests.get(
-            '').text
+            'https://gimmeproxy.com/api/getProxy?curl=true&protocol=http&supportsHttps=true').text
         if 'limit' in curl:
             return None
         return {"http": curl, "https": curl}

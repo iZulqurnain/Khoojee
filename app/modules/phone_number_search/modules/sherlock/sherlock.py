@@ -6,9 +6,9 @@ import requests
 
 from requests_futures.sessions import FuturesSession
 
-from app.core.modules.sherlock.notify import QueryNotifyPrint
-from app.core.modules.sherlock.result import QueryResult, QueryStatus
-from app.core.modules.sherlock.sites import SitesInformation
+from app.modules.phone_number_search.modules.sherlock import QueryNotifyPrint
+from app.modules.phone_number_search.modules.sherlock import QueryResult, QueryStatus
+from app.modules.phone_number_search.modules.sherlock import SitesInformation
 
 
 class SherlockFuturesSession(FuturesSession):

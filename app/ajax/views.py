@@ -3,10 +3,11 @@ import re
 
 from django.http import HttpResponse
 
-from app.core.mobile_search.search_record import SearchRecord
 from app.models import PhoneNumbersModel
 
 import math
+
+from app.modules.phone_number_search.mobile_search.search_record import SearchRecord
 
 millnames = ['', ' Thousand', ' Million', ' Billion', ' Trillion']
 

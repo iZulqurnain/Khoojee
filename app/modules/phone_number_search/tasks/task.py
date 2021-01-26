@@ -1,10 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 from django.utils.timezone import now
-import lxml.html
 
-from app.core.modules.instantusername.instant_username_search import InstantUsernameSearch
-from app.core.modules.search_engine.google_search import google_search
+from app.modules.phone_number_search.modules.instantusername.instant_username_search import InstantUsernameSearch
+from app.modules.phone_number_search.modules.search_engine.google_search import google_search
 
 
 class SharedContent:
@@ -12,11 +11,13 @@ class SharedContent:
 
 
 def fine_social_user(user_name):
+    from app.modules.phone_number_search.modules.sherlock.sherlock import search_username
+
     print("Searching for user name " + user_name)
     from app.models import SocialUserSearch
-    from app.core.modules.sherlock.sherlock import search_username
     user_id = None
     try:
+
         content = SocialUserSearch.objects.get(username=user_name)
         print(content.username, str(content.search_status))
         SharedContent.USER_REF = content

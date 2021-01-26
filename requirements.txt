@@ -18,4 +18,4 @@ redis
 django-datatables-view
 dj-database-url
 google
-psycopg2
+fake-useragent

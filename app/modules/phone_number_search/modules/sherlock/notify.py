@@ -4,8 +4,8 @@ This module defines the objects for notifying the caller about the
 results of queries.
 """
 
-from app.core.modules.sherlock.result import QueryStatus
-from app.core.tasks.task import SharedContent
+from app.modules.phone_number_search.modules.sherlock import QueryStatus
+from app.modules.phone_number_search.tasks import SharedContent
 from app.models import SocialUserFound
 
 

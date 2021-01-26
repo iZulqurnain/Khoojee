@@ -1,4 +1,32 @@
 {% extends 'theme/layout.html' %}
 {% block content %}
-
+{% load static %}
+<div class="row row-deck row-cards">
+    <div class="col-lg-6">
+        <div class="card card-link">
+            <div class="card-cover card-cover-blurred text-center"
+                 style="background-image: url({% static 'images/5614ec7eb9034d04.jpg' %})">
+                <span class="avatar avatar-xl avatar-thumb avatar-rounded"
+                      style="background-image:url({% static 'images/zul.jpg' %}"></span>
+            </div>
+            <div class="card-body text-center">
+                <div class="card-title mb-1">Zulqurnain Akhter</div>
+                <div class="text-muted">Student & Dev</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card card-link">
+            <div class="card-cover card-cover-blurred text-center" style="background-image: url(./static/photos/2854fd67ddbd6217.jpg
+)">
+                <span class="avatar avatar-xl avatar-thumb avatar-rounded"
+                      style="background-image: url(./static/avatars/012f.jpg)"></span>
+            </div>
+            <div class="card-body text-center">
+                <div class="card-title mb-1">Marsha Labat</div>
+                <div class="text-muted">Research Associate</div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

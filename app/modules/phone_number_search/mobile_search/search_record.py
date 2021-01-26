@@ -1,8 +1,8 @@
 import json
 
-from app.core.mobile_search.services.contact_data import ContactData
-from app.core.mobile_search.services.sim_location import SimLocation
-from app.core.mobile_search.services.teleem_pk import TeleemPk
+from app.modules.phone_number_search.mobile_search.services.contact_data import ContactData
+from app.modules.phone_number_search.mobile_search.services.sim_location import SimLocation
+from app.modules.phone_number_search.mobile_search.services.teleem_pk import TeleemPk
 
 
 class SearchRecord:

@@ -2,10 +2,10 @@ from __future__ import absolute_import
 import os
 from celery import Celery, shared_task
 
-from app.core.tasks.task import fine_social_user
+from app.modules.phone_number_search.tasks.task import fine_social_user
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'phantom.settings')
-app = Celery('phantom')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Khoojee.settings')
+app = Celery('Khoojee')
 
 app.config_from_object('django.conf.settings', namespace='CELERY')
 app.autodiscover_tasks()
