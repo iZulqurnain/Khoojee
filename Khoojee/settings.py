@@ -87,12 +87,26 @@ WSGI_APPLICATION = 'Khoojee.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+DATABASES= {}
+
+if 'ON_HEROKU' in os.environ:
+    DATABASES['default'].update(dj_database_url.config(conn_max_age=500, ssl_require=True))
+else:
+    DATABASES = {
+
+        'default': {
+
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+            'NAME': os.getenv("DB_NAME"),
+            'USER':os.getenv("DB_USERNAME"),
+            'PASSWORD': os.getenv("DB_PASSWORD"),
+            'HOST': os.getenv("DB_HOST"),
+            'PORT': os.getenv("DB_PORT"),
+
     }
-}
+
+    }
 
 
 # Password validation
@@ -151,5 +165,17 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 
+SERVER_ONE = ''
+PROXY_SERVER = ''
+SERVER_TWO = ''
+SERVER_THREE = ''
+SERVER_FOUR = ''
+
 if 'ON_HEROKU' in os.environ:
+
     django_heroku.settings(locals())
+    SERVER_ONE = str(os.environ['SERVER_ONE'])
+    PROXY_SERVER = str(os.environ['PROXY_SERVER'])
+    SERVER_TWO = str(os.environ['SERVER_TWO'])
+    SERVER_THREE = str(os.environ['SERVER_THREE'])
+    SERVER_FOUR = str(os.environ['SERVER_FOUR'])

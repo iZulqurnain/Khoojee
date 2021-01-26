@@ -15,13 +15,21 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include, re_path
 
-from app.view.home_page import home
+from app.view.details_page import user_details
+from app.view.home_page import home, username_home
 from app.view.search_domain_info import home as domain_info
+from app.view.search_mobile import mobile_home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name="home_page"),
     path('domain_info/', domain_info, name="domain_info"),
+    path('username_info/', username_home, name="username_info"),
+    path('mobile_info/', mobile_home, name="mobile_info"),
+url('^user_details/$', user_details, name='user_details'),
+    re_path('search/', include('app.urls')),
+    re_path('ajax/', include('app.ajax.urls')),
+
 ]
