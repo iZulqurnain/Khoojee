@@ -37,10 +37,10 @@ else:
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-if 'ON_HEROKU' in os.environ:
-    DEBUG = False
-else:
-    DEBUG = True
+# if 'ON_HEROKU' in os.environ:
+#     DEBUG = False
+# else:
+#     DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
