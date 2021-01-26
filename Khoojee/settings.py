@@ -87,7 +87,8 @@ WSGI_APPLICATION = 'Khoojee.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES= {}
+# Database
+DATABASES = {'default': {}}
 
 if 'ON_HEROKU' in os.environ:
     DATABASES['default'].update(dj_database_url.config(conn_max_age=500, ssl_require=True))
