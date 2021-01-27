@@ -1,4 +1,4 @@
-{% extends "layout/layout.html" %}
+{% extends "theme/layout.html" %}
 {% load static %}
 {% load i18n %}
 {% block pagetitle %} PHANTOM -IG {% endblock %}
@@ -44,21 +44,16 @@
         </div>
 
     {% elif content.is_running %}
-        <div class="row row-cards row-deck">
-            <div class="col-12">
+<div class="card card-md">
+          <div class="card-body text-center py-4 p-sm-5">
+            <h1 class="mt-5">Please wait!</h1>
+            <p class="text-muted">We are processing your request it may take some time.</p>
+              <div class="progress">
+                            <div class="progress-bar progress-bar-indeterminate bg-green"></div>
+                          </div>
+          </div>
 
-                <div class="text-center" style="background: #ffffff">
-
-                    <img src="{% static '/images/tenor.gif' %}"
-                         style="  margin-top: 20px;width: 220px; height: 220px" alt="">
-                    <div class="alert alert-primary">
-                        <p>Search started, please view again it will take sometime to complete.</p>
-                    </div>
-                </div>
-
-            </div>
         </div>
-
     {% else %}
         {% include 'pages/username_search/details_content/usernaem_search.html' %}
         {% include 'pages/username_search/details_content/google_search.html' %}

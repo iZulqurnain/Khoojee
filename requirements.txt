@@ -19,3 +19,4 @@ django-datatables-view
 dj-database-url
 google
 fake-useragent
+django_extensions

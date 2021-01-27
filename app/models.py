@@ -142,3 +142,12 @@ class CharaghSharedNumber(models.Model):
 
     class Meta:
         db_table = 'tbl_charagh_shared_number'
+
+
+class DomainInfoRaw(models.Model):
+    domain = models.CharField(max_length=256, unique=True, null=False)
+    whois_xml = models.CharField(max_length=4000, null=False)
+    secuirty_trails = models.CharField(max_length=4000, null=False)
+
+    class Meta:
+        db_table = 'tbl_domain_info_raw'

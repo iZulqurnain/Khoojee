@@ -111,4 +111,4 @@ def user_details(request):
         content[
             "error_message"] = "Failed to perform action against request. Please try again with correct information."
 
-    return render(request, 'pages/details.html', {'content': content})
+    return render(request, 'pages/username_search/details.html', {'content': content})
