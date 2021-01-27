@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django_extensions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app.apps.AppConfig',
@@ -184,3 +185,4 @@ else:
     SERVER_TWO = os.getenv("SERVER_TWO")
     SERVER_THREE = os.getenv("SERVER_THREE")
     SERVER_FOUR = os.getenv("SERVER_FOUR")
+
