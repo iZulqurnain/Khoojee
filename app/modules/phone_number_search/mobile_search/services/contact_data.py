@@ -34,16 +34,20 @@ class ContactData:
             payload = {'cnnum': self.__MOBILE_NUMBER__}
             ua = UserAgent()
             headers = {
-                "user-agent" : ua.random
-               }
+                "user-agent": ua.random
+            }
             if use_proxy:
                 proxies = GetProxy.gen_proxy()
-                response = requests.post(SERVER_ONE, headers=headers,proxies = proxies,
-                                     data=payload)
+                request = requests.Session()
+
+                response = request.post(SERVER_ONE, headers=headers, proxies=proxies,
+                                        data=payload)
                 print("Using proxy : ", proxies)
                 print(response.content)
             else:
-                response = requests.post(SERVER_ONE, headers=headers,
+                request = requests.Session()
+
+                response = request.post(SERVER_ONE, headers=headers,
                                          data=payload)
 
             soup = BeautifulSoup(response.content, 'html.parser')

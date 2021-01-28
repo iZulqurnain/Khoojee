@@ -30,7 +30,7 @@ urlpatterns = [
     path('username_info/', username_home, name="username_info"),
     path('mobile_info/', mobile_home, name="mobile_info"),
     path('about_us/', about_us, name="about_us"),
-url('^user_details/$', user_details, name='user_details'),
+    url('^user_details/$', user_details, name='user_details'),
     re_path('search/', include('app.urls')),
     re_path('ajax/', include('app.ajax.urls')),
 
